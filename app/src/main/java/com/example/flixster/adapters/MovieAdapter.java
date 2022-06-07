@@ -108,6 +108,15 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
             int position = getAdapterPosition();
             if (position != RecyclerView.NO_POSITION) { //if position valid, get that movie
                 Movie movie = movies.get(position);
+                 /* the following code is good, but we can improve it from devloper experience perspective. 
+                 * What if we can make MovieDetailsActivity have responsibility/logic of how to make this
+                 * intent and we pass movie as parameter. 
+                 * We can explore something like this
+                    Intent intent = MovieDetailsActivity.createActivity(movie);
+                    context.startActivity(intent); 
+                 */
+                        
+             
                 Intent intent = new Intent(context, MovieDetailsActivity.class);
                 intent.putExtra(Movie.class.getSimpleName(), Parcels.wrap(movie));
                 context.startActivity(intent);
